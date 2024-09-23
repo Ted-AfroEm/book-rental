@@ -7,60 +7,85 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About the Book Rental Application
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The Book Rental Application allows users to rent books from owners within their neighborhood. Owners can register to upload books they own, while users can browse and rent available books. System admins monitor the platform to approve owners and book listings. The app is built using Laravel and offers a user-friendly experience for both renters and book owners.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+There are three types of users in the system:
+
+1. **Users who rent books**
+2. **Users who upload books for rent (book owners)**
+3. **System admins who monitor and govern book owners**
+
+### User Flows
+
+#### Owner Dashboard
+
+Owners can:
+
+-   Upload books for rent.
+-   Update book information, such as quantity and availability (using Laravel Policies).
+-   Remove books from the system (using Laravel Policies).
+-   View the list of books they have uploaded.
+-   Track revenue generated from renting their books.
+-   Add new books if they are not already registered, including details like title, author, and category.
+
+#### System Admin Dashboard
+
+Admins can:
+
+-   View and approve newly registered owners.
+-   View and approve newly registered books.
+-   Disable owners and their listings (using Laravel Policies).
+-   Filter books by category, author, or owner.
+-   Track statistics on available books by category and owner location.
+
+### Basic Access Control
+
+-   Owners manage their own books, and their books will be available for rent only after admin approval.
+-   Only system admins can see all books and filter through them.
+-   When both copies of a rented book are out, it becomes unavailable until returned.
+-   If an owner is disabled, all of their books are removed from availability.
+
+### Technology Stack
+
+-   **Backend:** Laravel with JWT or cookies for authentication (using Laravel Passport or Sanctum for JWT).
+-   **Frontend:** React
+-   **Database:** MySQL
+
+### Requirements
+
+1. Implement proper access control so that owners can manage only their books.
+2. Ensure only system admins can view and filter through all books.
+3. Owner-uploaded books will only appear for rent if both the owner and the books are approved by a system admin.
+4. Update the owner’s wallet when a book is rented.
+5. Use fixed book categories, which can be seeded directly into the database.
+
+### Libraries to Use
+
+-   Laravel for backend logic and validation.
+-   MySQL for the database.
+-   JWT Authentication via Laravel Passport or Sanctum.
+-   Frontend UI with React.
 
 ## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Laravel is a web application framework with expressive, elegant syntax. The [documentation](https://laravel.com/docs) offers a comprehensive guide to help developers get started. Additionally, the [Laravel Bootcamp](https://bootcamp.laravel.com) and [Laracasts](https://laracasts.com) provide video tutorials and courses.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Thank you for considering contributing to the Laravel framework! Contributions are welcome and can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
 ## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Please review the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct) to ensure that the Laravel community remains welcoming to all.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability in Laravel, please report it by sending an email to Taylor Otwell at [taylor@laravel.com](mailto:taylor@laravel.com). We will address the issue promptly.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
